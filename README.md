@@ -28,19 +28,30 @@ http://example.com/login/
 
 * `example.com`の部分は設置したサーバや環境の物に置き換えてください。
 
-## DBの準備
-DBを利用したサンプルを実行する場合は、事前に`sql/init.sql`を実行してください。
+## その他の準備
+### DB
+「DB」を利用したサンプルを実行する場合は、事前に`sql/init.sql`を実行してください。
 
 ```
 $ mysql -u root -p < sql/init.sql
 ```
 
-## 動作環境
+### Memcached
+「キャッシュ」を利用したサンプルを実行する場合はMemcachedのインストール、その後Memcachedサーバを起動をする必要があります。
 
+```
+$ sudo rpm -ivh rpm/memcached-1.5.0-1.el7.remi.x86_64.rpm
+$ sudo systemctl start memcached.service
+```
+
+* 本リポジトリ内にあるRPMは実習環境(CentOS7.2)を想定した物です。
+* `yum`や`apt`などパッケージマネージャが利用できる場合は、そちらを優先してください。
+
+
+## 動作環境
 * 一般的なLAMP環境での実行を想定しています。
 * PHP7.0以上
 
 
 ## 注意点
-
 1. パスワードをハッシュ化せずにそのままDBなどへ保存することは推奨されません。
