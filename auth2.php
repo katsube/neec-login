@@ -47,7 +47,6 @@ else{
  */
 function authDB(string $id, string $pw){
 	// SQLの準備
-	//$sql = sprintf('SELECT id, pw FROM User WHERE id="%s"', $id);			//★セキュリティホール
 	$sql = 'SELECT id, pw FROM User WHERE id=:id';
 
 	// SQLを実行

@@ -47,7 +47,7 @@ else{
  */
 function authDB(string $id, string $pw){
 	// SQLの準備
-	$sql = sprintf('SELECT count(*) as cnt FROM User WHERE id=\'%s\' and pw=\'%s\'', $id, $pw);		//★セキュリティホール
+	$sql = "SELECT count(*) as cnt FROM User WHERE id=\'$id\' and pw=\'$pw\'";		//★セキュリティホール
 
 	// SQLを実行
 	$dbh = new PDO(DB_DSN, DB_USER, DB_PW);  // 接続
