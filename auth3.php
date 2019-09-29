@@ -69,9 +69,15 @@ function authDB(string $id, string $pw){
 
 	// 実行結果を取得
 	$result = $sth->fetch(PDO::FETCH_ASSOC);
-	setCache($id, $result['pw']);	// キャッシュに保存
 
-	return( ($result !== false) && ($result['pw'] === $pw) );
+	// 認証
+	if( ($result !== false) && ($result['pw'] === $pw) ){
+		setCache($id, $result['pw']);	// キャッシュに保存
+		return(true);
+	}
+	else{
+		return(false);
+	}
 }
 
 
