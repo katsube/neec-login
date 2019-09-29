@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>ログイン画面サンプル</title>
+  <title>ログイン機能サンプル</title>
   <style>
     body{
       background-color: gray;
@@ -14,7 +14,7 @@
     #contents{
       width: 50%;
       min-width: 450px;
-      height: 400px;
+      height: 500px;
       margin: auto;
       text-align: center;
       vertical-align: middle;
@@ -41,12 +41,13 @@
 <body>
 
 <section id="contents">
-  <h1>ログイン画面サンプル</h1>
+  <h1>ログイン機能サンプル</h1>
   <menu id="mainmenu">
     <ul>
       <li><button type="button" id="simple" class="menu-item">シンプル</button></li>
       <li><button type="button" id="db1" class="menu-item">DB</button></li>
       <li><button type="button" id="db2" class="menu-item">DB (キャッシュあり)</button></li>
+      <li><button type="button" id="sec1" class="menu-item">SQLインジェクション</button></li>
     </ul>
   </menu>
 </section>
@@ -61,6 +62,9 @@ window.onload = () => {
   });
   document.querySelector("#db2").addEventListener("click", ()=>{
     location.href="login3.html";
+  });
+  document.querySelector("#sec1").addEventListener("click", ()=>{
+    location.href="login4.html";
   });
 };
 </script>

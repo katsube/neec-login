@@ -57,10 +57,8 @@ window.onload = () => {
         return(res.json());
       })
       .then((json)=>{
-        console.log(json);
-
         if( json.head.result ){
-          alert("⭕ 成功しました");
+          location.href = "complete.php";
         }
         else{
           alert("❌ 失敗しました");

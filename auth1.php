@@ -31,6 +31,7 @@ if( ($email === null) || ($password === null) ){
 //-------------------------------
 // 成功
 if( array_key_exists($email, $users) && ($users[$email] === $password) ){
+	setcookie('uname', $email, (time()+(60*60*24*365)));	//1年間有効なCookieを発行
 	putResult(true);
 }
 // 失敗
