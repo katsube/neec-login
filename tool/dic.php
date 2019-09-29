@@ -40,4 +40,4 @@ while( ($buff = fgets($fp)) !== false ){
 fclose($fp);
 
 //処理時間
-echo "Time: ".time() - $start ."(sec)\n";
+echo "Time: " . (time() - $start) ."(sec)\n";

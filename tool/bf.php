@@ -39,7 +39,7 @@ for($i=LOOP_START; $i<=LOOP_MAX; $i++){
 }
 
 //処理時間
-echo "Time: ".time() - $start ."(sec)\n";
+echo "Time: ". (time() - $start) ."(sec)\n";
 
 
 /**
