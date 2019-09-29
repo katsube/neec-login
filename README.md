@@ -48,6 +48,22 @@ $ sudo systemctl start memcached.service
 * `yum`や`apt`などパッケージマネージャが利用できる場合は、そちらを優先してください。
 
 
+## アタック演習
+### Brute Force Attack
+`auth1.php`に対して総当たり攻撃を行います。中々の時間がかかります。
+
+```
+$ php tool/bf.php
+```
+
+### Dictionary Attack
+`auth1.php`に対して辞書攻撃を行います。一瞬で終了します。
+
+```
+$ php tool/dic.php
+```
+
+
 ## 動作環境
 * 一般的なLAMP環境での実行を想定しています。
 * PHP7.0以上
