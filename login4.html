@@ -14,12 +14,12 @@
     <form id="form-login">
       <div class="form-item">
         <label for="email"></label>
-        <input type="text" name="email" id="input-email" required="required" placeholder="Email Address"><br>
-        <small style="color:gray">※Eメールの書式チェックを外しました</small>
+        <input type="email" name="email" id="input-email" required="required" placeholder="Email Address"><br>
       </div>
       <div class="form-item">
         <label for="password"></label>
-        <input type="password" name="password" id="input-pw" required="required" placeholder="Password" value="' OR 1=1 -- ">
+        <input type="text" name="password" id="input-pw" required="required" placeholder="Password" value="' OR 1=1 -- ">
+        <small style="color:gray">※パスワードが表示されるよう変更しました</small>
       </div>
       <div class="button-panel">
         <input type="submit" id="btn-login" class="button" title="Sign In" value="ログイン">
