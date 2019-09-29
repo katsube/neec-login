@@ -79,11 +79,25 @@ function authDB(string $id, string $pw){
 	}
 }
 
-
-function setCache(string $key, $value, $time=180){
+/**
+ * Memcachedに保存
+ *
+ * @param string $key
+ * @param mixed $value
+ * @param integer [$time=180]
+ * @return void
+ */
+function setCache(string $key, $value, int $time=180){
 	$client = new LiteMemcache('localhost:11211');
 	$client->set($key, $value, $time );		// デフォルトでは180秒間キャッシュする
 }
+
+/**
+ * Memcachedからデータを取得
+ *
+ * @param string $key
+ * @return void
+ */
 function getCache(string $key){
 	$client = new LiteMemcache('localhost:11211');
 	return( $client->get($key) );
