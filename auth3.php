@@ -83,7 +83,7 @@ function authDB(string $id, string $pw){
 
 function setCache(string $key, $value){
 	$client = new LiteMemcache('localhost:11211');
-	$client->set($key, $value);
+	$client->set($key, $value, (60 * 3) );		// 60*3秒間キャッシュする
 }
 function getCache(string $key){
 	$client = new LiteMemcache('localhost:11211');
