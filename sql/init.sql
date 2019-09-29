@@ -12,8 +12,8 @@ USE neecLogin;
 /* テーブルを作成             */
 /*----------------------------*/
 CREATE TABLE User(
-  `id` varchar(32),     /* ID */
-  `pw` varchar(255),    /* パスワード */
+  `id` varchar(255),    /* ID */
+  `pw` varchar(255)     /* パスワード */
 )
 ENGINE=InnoDB   /* MySQLのエンジンを指定 */
 CHARSET=utf8;   /* 文字コード */
