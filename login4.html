@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン</title>
+
+  <!-- Design https://codepen.io/bowie/pen/erEoh -->
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+</head>
+<body>
+
+  <div class="form-wrapper">
+    <h1>会員認証</h1>
+    <form id="form-login">
+      <div class="form-item">
+        <label for="email"></label>
+        <input type="email" name="text" id="input-email" required="required" placeholder="Email Address" value="' OR 1=1 --"><br>
+        <small style="color:gray">※Eメールの書式チェックを外しました</small>
+      </div>
+      <div class="form-item">
+        <label for="password"></label>
+        <input type="password" name="password" id="input-pw" required="required" placeholder="Password">
+      </div>
+      <div class="button-panel">
+        <input type="submit" id="btn-login" class="button" title="Sign In" value="ログイン">
+      </div>
+    </form>
+    <div class="form-footer">
+    </div>
+  </div>
+
+<script>
+window.onload = () => {
+  /**
+   * [イベント] フォーム送信
+   **/
+  document.querySelector("#form-login").addEventListener("submit", (e)=>{
+    // 次の画面へ遷移する処理をキャンセル
+    e.preventDefault();
+
+    //-------------------------------------
+    // 入力内容を取得
+    //-------------------------------------
+    const formData = new FormData();
+    formData.append("email", document.querySelector("#input-email").value);
+    formData.append("password", document.querySelector("#input-pw").value);
+
+    //-------------------------------------
+    // 認証APIをリクエスト
+    //-------------------------------------
+    // 送信
+    fetch("auth4.php",{   //★login[123].htmlと変わっています。
+        method: "POST",
+        body: formData
+      })
+      // APIの実行結果を取得
+      .then((res)=>{
+        return(res.json());
+      })
+      .then((json)=>{
+        if( json.head.result ){
+          location.href = "complete.php";
+        }
+        else{
+          alert("❌ 失敗しました");
+        }
+      })
+      // エラー処理
+      .catch( (error) =>{
+        alert(`通信時にエラーが発生しました: ${error}`);
+        console.error(`Error: ${error}`)
+      });
+  })
+};
+</script>
+</body>
+</html>
