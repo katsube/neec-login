@@ -28,7 +28,12 @@ http://example.com/login/
 
 * `example.com`の部分は設置したサーバや環境の物に置き換えてください。
 
+## DBの準備
+DBを利用したサンプルを実行する場合は、事前に`sql/init.sql`を実行してください。
 
+```
+$ mysql -u root -p < sql/init.sql
+```
 
 ## 動作環境
 
