@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン画面サンプル</title>
+  <style>
+    body{
+      background-color: gray;
+    }
+    h1{
+      padding-top: 30px;
+      padding-bottom: 20px;
+    }
+    #contents{
+      width: 50%;
+      min-width: 450px;
+      height: 300px;
+      margin: auto;
+      text-align: center;
+      vertical-align: middle;
+      background-color: white;
+      border-radius: 10px;
+    }
+    #mainmenu{
+      width: 400px;
+      margin: auto;
+    }
+    #mainmenu ul{
+      list-style-type: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    .menu-item{
+      width: 300px;
+      height: 60px;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<section id="contents">
+  <h1>ログイン画面サンプル</h1>
+  <menu id="mainmenu">
+    <ul>
+      <li><button type="button" id="simple" class="menu-item">シンプル</button></li>
+      <li><button type="button" id="db" class="menu-item">DB</button></li>
+    </ul>
+  </menu>
+</section>
+
+<script>
+window.onload = () => {
+  document.querySelector("#simple").addEventListener("click", ()=>{
+    location.href="login1.html";
+  });
+  document.querySelector("#db").addEventListener("click", ()=>{
+    location.href="login2.html";
+  });
+};
+</script>
+</body>
+</html>
