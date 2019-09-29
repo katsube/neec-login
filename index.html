@@ -14,7 +14,7 @@
     #contents{
       width: 50%;
       min-width: 450px;
-      height: 300px;
+      height: 400px;
       margin: auto;
       text-align: center;
       vertical-align: middle;
@@ -45,7 +45,8 @@
   <menu id="mainmenu">
     <ul>
       <li><button type="button" id="simple" class="menu-item">シンプル</button></li>
-      <li><button type="button" id="db" class="menu-item">DB</button></li>
+      <li><button type="button" id="db1" class="menu-item">DB</button></li>
+      <li><button type="button" id="db2" class="menu-item">DB (キャッシュあり)</button></li>
     </ul>
   </menu>
 </section>
@@ -55,8 +56,11 @@ window.onload = () => {
   document.querySelector("#simple").addEventListener("click", ()=>{
     location.href="login1.html";
   });
-  document.querySelector("#db").addEventListener("click", ()=>{
+  document.querySelector("#db1").addEventListener("click", ()=>{
     location.href="login2.html";
+  });
+  document.querySelector("#db2").addEventListener("click", ()=>{
+    location.href="login3.html";
   });
 };
 </script>

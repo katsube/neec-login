@@ -1,10 +1,15 @@
 <?php
 /**
- * ユーザー認証API - DB版
+ * ユーザー認証API - DB版(キャッシュあり)
  *
  * @version 1.0.0
  * @author M.Katsube <katsubemakito@gmail.com>
  */
+
+//-------------------------------
+// ライブラリ
+//-------------------------------
+require_once('lib/LiteMemcache.class.php');
 
 //-------------------------------
 // DBの接続情報
@@ -46,8 +51,14 @@ else{
  * @return boolean
  */
 function authDB(string $id, string $pw){
+	// キャッシュをチェック
+	if( ($cache = getCache($id)) !== NULL ){
+		// キャッシュに存在すれば認証
+		return( $cache === $pw );
+	}
+
 	// SQLの準備
-	$sql = sprintf('SELECT id, pw FROM User WHERE id="%s"', $id);			//★セキュリティホール
+	$sql = sprintf('SELECT id, pw FROM User WHERE id="%s"', $id);	//★セキュリティホール
 	// $sql = 'SELECT count(*) as cnt FROM User WHERE id=:id';
 
 	// SQLを実行
@@ -58,8 +69,21 @@ function authDB(string $id, string $pw){
 
 	// 実行結果を取得
 	$result = $sth->fetch(PDO::FETCH_ASSOC);
+	setCache($id, $result['pw']);	// キャッシュに保存
+
 	return( ($result !== false) && ($result['pw'] === $pw) );
 }
+
+
+function setCache(string $key, $value){
+	$client = new LiteMemcache('localhost:11211');
+	$client->set($key, $value);
+}
+function getCache(string $key){
+	$client = new LiteMemcache('localhost:11211');
+	return( $client->get($key) );
+}
+
 
 /**
  * 結果をJSON形式で表示
