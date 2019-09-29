@@ -52,7 +52,7 @@ function authDB(string $id, string $pw){
 
 	// SQLを実行
 	$dbh = new PDO(DB_DSN, DB_USER, DB_PW);   // 接続
-	$sth = $dbh->prepare();       	// SQL準備
+	$sth = $dbh->prepare($sql);     // SQL準備
 	// $sth->bindValue(':id', $id, PDO::PARAM_STR);
 	// $sth->bindValue(':pw', $pw, PDO::PARAM_STR);
 	$sth->execute();                // 実行
