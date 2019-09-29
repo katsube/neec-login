@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ログイン完了</title>
+</head>
+<body>
+
+<h1>ログインしました</h1>
+<p>ようこそ<strong id="uname"></strong>さん。いらっしゃいませ。</p>
+
+<script>
+window.onload = ()=>{
+  const uname = sessionStorage.getItem("uname");
+  document.querySelector("#uname").innerHTML = uname;
+}
+</script>
+</body>
+</html>

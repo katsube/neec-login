@@ -42,8 +42,10 @@ window.onload = () => {
     // 入力内容を取得
     //-------------------------------------
     const formData = new FormData();
-    formData.append("email", document.querySelector("#input-email").value);
-    formData.append("password", document.querySelector("#input-pw").value);
+    const email = document.querySelector("#input-email").value;
+    const password = document.querySelector("#input-pw").value;
+    formData.append("email", email);
+    formData.append("password", password);
 
     //-------------------------------------
     // 認証APIをリクエスト
@@ -59,7 +61,8 @@ window.onload = () => {
       })
       .then((json)=>{
         if( json.head.result ){
-          location.href = "complete.php";
+          localStorage.setItem('uname', email);
+          location.href = "complete.html";
         }
         else{
           alert("❌ 失敗しました");
