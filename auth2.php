@@ -47,14 +47,14 @@ else{
  */
 function authDB(string $id, string $pw){
 	// SQLの準備
-	$sql = sprintf('SELECT id, pw FROM User WHERE id="%s"', $id);			//★セキュリティホール
-	// $sql = 'SELECT count(*) as cnt FROM User WHERE id=:id';
+	//$sql = sprintf('SELECT id, pw FROM User WHERE id="%s"', $id);			//★セキュリティホール
+	$sql = 'SELECT id, pw FROM User WHERE id=:id';
 
 	// SQLを実行
-	$dbh = new PDO(DB_DSN, DB_USER, DB_PW);   // 接続
-	$sth = $dbh->prepare($sql);     // SQL準備
-	// $sth->bindValue(':id', $id, PDO::PARAM_STR);
-	$sth->execute();                // 実行
+	$dbh = new PDO(DB_DSN, DB_USER, DB_PW);   		// 接続
+	$sth = $dbh->prepare($sql);     				// SQL準備
+	$sth->bindValue(':id', $id, PDO::PARAM_STR);	// プレースホルダを埋める
+	$sth->execute();                				// 実行
 
 	// 実行結果を取得
 	$result = $sth->fetch(PDO::FETCH_ASSOC);
