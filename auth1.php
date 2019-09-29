@@ -17,8 +17,8 @@ $users = [
 //-------------------------------
 // 引数を受け取る
 //-------------------------------
-$email    = isset($_POST['email'])?  $_POST['email']:null;
-$password = isset($_POST['password'])? $_POST['password']:null;
+$email    = isset($_REQUEST['email'])?  $_REQUEST['email']:null;
+$password = isset($_REQUEST['password'])? $_REQUEST['password']:null;
 
 // 入力値をチェック
 if( ($email === null) || ($password === null) ){
